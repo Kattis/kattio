@@ -25,6 +25,8 @@
  *   a good idea to use hasMoreTokens() to check for end-of-file.
  *
  * @author: Kattis
+ * 
+ * Modified based on MIT License
  * @author: Shear
  */
 
