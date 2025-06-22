@@ -45,7 +45,3 @@ read_token_codes_helper([C0|C]) :-
 	read_token_codes_helper(C).
 
 read_token_codes_helper([]).
-
-
-
-
