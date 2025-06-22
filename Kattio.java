@@ -38,35 +38,34 @@ import java.io.OutputStream;
 
 class Kattio extends PrintWriter {
     public Kattio(InputStream i) {
-	super(new BufferedOutputStream(System.out));
-	r = new BufferedReader(new InputStreamReader(i));
+        super(new BufferedOutputStream(System.out));
+        this.r = new BufferedReader(new InputStreamReader(i));
     }
+
     public Kattio(InputStream i, OutputStream o) {
-	super(new BufferedOutputStream(o));
-	r = new BufferedReader(new InputStreamReader(i));
+        super(new BufferedOutputStream(o));
+        this.r = new BufferedReader(new InputStreamReader(i));
     }
 
     public boolean hasMoreTokens() {
-	return peekToken() != null;
+        return this.peekToken() != null;
     }
 
     public int getInt() {
-	return Integer.parseInt(nextToken());
+        return Integer.parseInt(this.nextToken());
     }
 
     public double getDouble() { 
-	return Double.parseDouble(nextToken());
+        return Double.parseDouble(this.nextToken());
     }
 
     public long getLong() {
-	return Long.parseLong(nextToken());
+        return Long.parseLong(this.nextToken());
     }
 
     public String getWord() {
-	return nextToken();
+        return this.nextToken();
     }
-
-
 
     private BufferedReader r;
     private String line;
@@ -74,21 +73,25 @@ class Kattio extends PrintWriter {
     private String token;
 
     private String peekToken() {
-	if (token == null) 
-	    try {
-		while (st == null || !st.hasMoreTokens()) {
-		    line = r.readLine();
-		    if (line == null) return null;
-		    st = new StringTokenizer(line);
-		}
-		token = st.nextToken();
-	    } catch (IOException e) { }
-	return token;
+        if (this.token == null) {
+            try {
+                while (this.st == null || !this.st.hasMoreTokens()) {
+                    this.line = this.r.readLine();
+                    if (this.line == null) {
+                        return null;
+                    }
+                    this.st = new StringTokenizer(this.line);
+                }
+                this.token = this.st.nextToken();
+            } catch (IOException e) {}
+        }
+
+        return this.token;
     }
 
     private String nextToken() {
-	String ans = peekToken();
-	token = null;
-	return ans;
+        String ans = this.peekToken();
+        this.token = null;
+        return ans;
     }
 }
